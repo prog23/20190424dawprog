@@ -13,13 +13,15 @@ public class Ejercicio3 {
 	public static void main(String[] args) throws IOException {
 		
 		Map<String, String> ips = new HashMap<>();
+		Map<String, String> mensaje = new HashMap<>();
+		Map<String, String> usuario = new HashMap<>();
 		BufferedReader in = new BufferedReader (new InputStreamReader(System.in));
 		boolean fin = false;
-	
-		int estado = 0;	
+			
 		do {
-			System.out.print("IP= ");
+			System.out.print("> ");
 			Scanner s = new Scanner(in.readLine());
+			int estado = 0;	
 			String token;
 			String nombre = null;
 		while (estado != 6) {
@@ -54,7 +56,7 @@ public class Ejercicio3 {
 					estado = 5;
 				}catch (NoSuchElementException e) {
 					System.out.println("Se esperaba =");
-					estado = 6;
+					estado = 5;
 				}
 				break;
 			case 2:
@@ -68,44 +70,65 @@ public class Ejercicio3 {
 				 break;
 			case 3:
 				try {
-					
+					token = s.skip("\\d{9}").match().group();
+					ips.put(nombre, token);
+					estado = 6;
 				}catch (NoSuchElementException e) {
-					 System.out.println("Se esperaba '='"); 
-					 estado = 6; 
-					 } 
+					System.out.println("Se esperaba otra cosa");
+					estado = 6;
+}
 				 break;
 			case 4:
 				try {
+					token = s.skip("\\d").match().group();
+					String dirIp = ips.get(token);
+						
+					if(dirIp==null) {
+						mensaje.put(token, dirIp);
+						System.out.println("correcto");
+						ips.put(token,dirIp);
+					}else {
+						System.out.println("error");
+						
+					}
 					
-				}catch (NoSuchElementException e) {
-					 System.out.println("Se esperaba '='"); 
-					 estado = 6; 
-					 } 
+					estado=6;
+				} catch (NoSuchElementException e) {
+					System.out.println("Se esperaba una direcion ip");
+					estado = 6;
+}
 				 break;
 			case 5:
 				try {
+					token = s.skip("\\p{L}+(\\s+\\p{L}+)*").match().group();
+					String mens=mensaje.get(token);
 					
-				}catch (NoSuchElementException e) {
-					 System.out.println("Se esperaba '='"); 
-					 estado = 6; 
-					 } 
-				 break;
+					mensaje.put(token, mens);
+					System.out.println(mensaje);
+					if(mens==null) {
+						mensaje.put(token, mens);
+						System.out.println("El mensaje es correcto");
+						fin=true;
+						estado=6;
+					}else {
+						System.out.println("El mensaje es incorrecto");
+						fin=true;
+						estado=6;
+						
+					}
+					estado = 6;
+					fin=true;
+				} catch (NoSuchElementException e) {
+					System.out.println("Se esperaba un mensaje o nombre");
+					estado = 6;
+					}
 			
-			
-		case 6:
-			try {
-				
-			}catch (NoSuchElementException e) {
-				 System.out.println("Se esperaba '='"); 
-				 estado = 6; 
-				 } 
-			 break;
-			
+					
 		}
 		}
 		}while(!fin);
 	
-
+		System.out.println(mensaje);
 
 		}
 		

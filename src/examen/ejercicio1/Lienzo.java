@@ -28,55 +28,34 @@ public class Lienzo extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);		
-		Graphics2D comp2D = (Graphics2D) g;
-        comp2D.setColor(Color.BLACK);
-        int señor = 10;
-        switch(señor) {
-        case 9:
-        	Line2D.Float base = new Line2D.Float(470F, 470F, 30F, 470F);
-        	comp2D.draw(base);
-        	break;
-        case 8:
-        	Line2D.Float vertical = new Line2D.Float(30F, 470F, 30F, 30F);
-        	comp2D.draw(vertical);
-        	break;
-        case 7:
-        	Line2D.Float top = new Line2D.Float(30F, 30F, 350F, 30F);
-        	comp2D.draw(top);
-        	break;
-        case 6:
-        	Line2D.Float cuerda = new Line2D.Float(150F, 30F, 30F, 150F);
-        	comp2D.draw(cuerda);
-        	break;
-        case 5:
-        	Float cabeza = new Arc2D.Float(320F, 120F, 61F, 61F, 0F, 360F, Arc2D.OPEN);
-        	comp2D.draw(cabeza);
-        	break;
-        case 4:
-        	Line2D.Float cuerpo = new Line2D.Float(350F, 180F, 350F, 290F);
-        	comp2D.draw(cuerpo);
-        	break;
-        case 3:
-        	Line2D.Float brazo1 = new Line2D.Float(350F, 200F, 300F, 250F);
-        	comp2D.draw(brazo1);
-        	break;
-        case 2:
-        	Line2D.Float brazo2 = new Line2D.Float(350F, 200F, 400F, 250F);
-        	comp2D.draw(brazo2);
-        	break;
-        case 1:
-        	Line2D.Float pierna1 = new Line2D.Float(350F, 290F, 300F, 390F);
-        	comp2D.draw(pierna1);
-        	break;
-        case 0:
-        	Line2D.Float pierna2 = new Line2D.Float(350F, 290F, 400F, 390F);
-        	comp2D.draw(pierna2);
-        	break;
+		Graphics2D g1 = (Graphics2D) g;
+		Line2D l1 = new Line2D.Float(470, 470, 30, 470);
+		g1.draw(l1);
+		Line2D l2 = new Line2D.Float(30, 470, 30, 30);
+		g1.draw(l2);
+		Line2D l3 = new Line2D.Float(30, 30, 350, 30);	
+		g1.draw(l3);
+		Line2D l4 =new Line2D.Float(150, 30, 30, 150);
+		g1.draw(l4);
+		Line2D l5 = new Line2D.Float(350, 30, 350, 120);
+		g1.draw(l5);
+		Arc2D l6 =new Arc2D.Float(320, 120, 61, 61, 0, 360, Arc2D.OPEN);
+		g1.draw(l6);
+		Line2D l7 = new Line2D.Float(350, 180, 350, 290);
+		g1.draw(l7);
+		Line2D l8 =new Line2D.Float(350, 200, 300, 250);
+		g1.draw(l8);
+		Line2D l9 = new Line2D.Float(350, 200, 400, 250);
+		g1.draw(l9);
+		Line2D l10 =new Line2D.Float(350, 290, 300, 390);
+		g1.draw(l10);
+		Line2D l11 = new Line2D.Float(350, 290, 400, 390);
+		g1.draw(l11);
         }
       
         
 	}
 		
-	}
+	
 	
 
